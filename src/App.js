@@ -1,23 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import Home from "./components/Home";
+import Profile from "./components/Profile"
+require('dotenv').config()
+console.log(process.env.REACT_APP_WEB3_API_KEY)
+console.log()
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <Home/> */}
+      {/* <Timetable /> */}
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white">
+        <div className="container-fluid">
+          <a className="navbar-brand" to="#">
+
+            Social Dapp
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item active">
+                <Link className="nav-link" to="home">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="profile">
+                  Profile
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Navigate replace to="home"></Navigate>} />
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+      </Routes>
+      {/* <Footer/> */}
+      {/* Routes */}
+      
     </div>
   );
 }
