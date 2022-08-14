@@ -2,8 +2,9 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile"
 import icon from "./images/icon.png"
+import socialdapp from "./images/socialDapp.png";
 // import style from "https://www.w3schools.com/w3css/4/w3.css"
-import "./App.css";
+// import "./App.css";
 require('dotenv').config()
 console.log(process.env.REACT_APP_WEB3_API_KEY)
 console.log()
@@ -14,7 +15,8 @@ function App() {
       {/* <Timetable /> */}
       <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white">
         <div className="container-fluid">
-          <img src="icon"/>
+        {/* <i className="fa-brands fa-square-twitter"></i> */}
+        <img src={socialdapp} width='30px'></img>
           <a className="navbar-brand" to="#">
 
             Social Dapp
