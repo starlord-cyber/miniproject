@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import { abi } from "../config";
 import { address } from "../config";
+import "./style.css"
 require('dotenv').config()
 console.log("i am here")
 console.log(process.env.REACT_APP_WEB3_API_KEY)
@@ -39,7 +40,19 @@ class Home extends Component {
       for(var i=0;i<postsCount;i++){
         const post=await socialdapp.methods.getPost(i).call()
         console.log(post)
+        let z={}
+        let x=[]
+        for(var j=0;j<post[4].length;j++){
+          let z=[]
+          z[0]=post[4][j]
+          z[1]=post[5][j]
+          x.push(z)
+        }
+        post[6]=x
+        post[7]=i
+        console.log(post)
         posts.push(post)
+        console.log(post[6])
       }
       this.setState({posts})
       console.log(posts)
@@ -59,17 +72,29 @@ class Home extends Component {
             console.log(hash)
         })
     }
+  addComment(u,v){
+    console.log("commentsinside")
+    this.state.socialdapp.methods.addComment(parseInt(u),v).send({from:this.state.account}).on('transactionHash', (hash) => {
+      console.log(hash)
+    })
+  }
   constructor(props) {
     super(props)
     this.state = {
       account: '',
       posts: [],
+      comments:{},
       socialdapp:null,
       loading: true,
-      values:{}
+      values:{},
+      cvalues:{},
+      x:'',
+      i:0
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCha = this.handleCha.bind(this);
+    this.handleSub = this.handleSub.bind(this);
   }
   handleChange(event) {
     const target = event.target;
@@ -86,7 +111,34 @@ class Home extends Component {
     
     console.log(this.state.values)
   }
-
+  handleCha(y,e){
+    console.log("insdie")
+    console.log(y,e.target.value)
+    const f=e.target.value
+    //alert(event.target.value);
+    this.setState(prevState=>{
+      let oldcvalues=prevState.cvalues
+      oldcvalues[y]=f
+      return{
+          cvalues:oldcvalues
+      }
+    })
+    console.log(this.state.cvalues)
+  }
+  handleSub(event){
+    let y=Object.keys(this.state.cvalues)
+    let x=y[0]
+    if(this.state.cvalues[y].localeCompare('')==0){
+      alert("empty comment")
+    }
+    else{
+      console.log("here")
+      this.addComment(x,this.state.cvalues[x]);
+    }
+    console.log("fck u jalapati")
+    console.log(this.state.cvalues)
+    event.preventDefault();
+  }
   handleSubmit(event) {
     if(this.state.values["text"].localeCompare('')==0){
         alert("empty post")
@@ -95,11 +147,24 @@ class Home extends Component {
     this.addPost(this.state.values["text"])}
     event.preventDefault();
   }
+
+  async newComment() {
+    const comment = prompt("What is the comment ?")
+    // if (comment && comment.length > 0) {
+    //   this.props.sendComment(this.props.value.postId, comment)
+    // }      
+    // console.log(this.state.socialdapp)
+    //     this.state.socialdapp.methods.addComment(comment).send({from:this.state.account}).on('transactionHash', (hash) => {
+    //         console.log(hash)
+    //     })
+  }
+  
+
   render(){
   return (
-    <div className="container text-left home pt-3" style={{ height: "100vh" }}>
+    <div className="container home pt-3 ml-5" style={{ height: "100vh" }}>
        <form onSubmit={this.handleSubmit}>
-            <div className="form-group w-100">
+            <div className="form-group w-75">
                 <label for="post">post
                     <textarea name="text" className="form-control w-100" id="post" rows="2" onChange={this.handleChange}/>
                 </label>
@@ -107,13 +172,35 @@ class Home extends Component {
             <button type="submit"  className="btn btn-primary mb-2">add Post</button>
         </form>
         {
-                
-        this.state.posts.map(post=><div className="card mt-5 w-100">
-                <div className="card-header">
+        this.state.posts.map(post=><div className="card mt-5 w-100 shadow-lg">
+                <div className="card-header bg-light text-success">
                     {post[2]}
                 </div>
                 <div className="card-body">
                     <p>{post[0]}</p>
+                </div>
+                <div className="card-footer">
+                  <p className="fst-italic">comments</p>{
+                  post[6].map((x)=>
+                  <div className="card mt-3 w-100">
+                        <div className="card-header bg-light text-success">
+                            {x[1]}
+                        </div>
+                        <div className="card-body">
+                            <p>{x[0]}</p>
+                        </div>
+                  </div>
+                  )}
+                  <div>
+                    <form onSubmit={this.handleSub}>
+                        <div className="form-group w-75">
+                            <label for="post">comment:
+                                <input type="text" className="form-control w-100" onChange={this.handleCha.bind(this,post[7])}/>
+                            </label>
+                        </div>
+                        <button type="submit"  className="btn btn-primary mb-2 mt-3">add comment</button>
+                    </form>
+                  </div>
                 </div>
             </div>)
         }

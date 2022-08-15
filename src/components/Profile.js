@@ -61,8 +61,8 @@ class Profile extends Component {
   render(){
   return (
     <div className="container text-left home pt-3" style={{ height: "100vh" }}>
-        {this.state.posts.length>0&&this.state.posts.map(post=><div className="card mt-5 w-100">
-                <div className="card-header">
+        {this.state.posts.length>0&&this.state.posts.map(post=><div className="card mt-5 w-100 shadow-lg">
+                <div className="card-header text-success">
                     {post[2]}
                 </div>
                 <div className="card-body">

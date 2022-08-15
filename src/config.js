@@ -1,5 +1,23 @@
-export const address="0x024A7DE848697B39807E2d18D4E9dCD3f18aCdd9";
+export const address = "0xb343c0aFbD16e0bA00F1EAA05DbF5c5B59EE2438";
 export const abi = [
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "comTxt",
+                "type": "string"
+            }
+        ],
+        "name": "addComment",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
     {
         "inputs": [
             {
@@ -16,6 +34,24 @@ export const abi = [
         "name": "addPost",
         "outputs": [],
         "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "int8",
+                "name": "c",
+                "type": "int8"
+            }
+        ],
+        "name": "changeLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -56,19 +92,6 @@ export const abi = [
     },
     {
         "inputs": [],
-        "name": "counter",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
         "name": "countPosts",
         "outputs": [
             {
@@ -104,6 +127,21 @@ export const abi = [
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            },
+            {
+                "internalType": "int8",
+                "name": "",
+                "type": "int8"
+            },
+            {
+                "internalType": "string[]",
+                "name": "",
+                "type": "string[]"
+            },
+            {
+                "internalType": "address[]",
+                "name": "",
+                "type": "address[]"
             }
         ],
         "stateMutability": "view",

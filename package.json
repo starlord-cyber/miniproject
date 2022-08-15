@@ -1,5 +1,6 @@
 {
   "name": "miniproject",
+  "homepage": "https://tej1404.github.io/miniproject/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +16,8 @@
     "web3": "^1.7.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -39,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "gh-pages": "^4.0.0"
   }
 }
