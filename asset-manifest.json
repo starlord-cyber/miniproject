@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/miniproject/static/css/main.78e3e4c8.chunk.css",
+    "main.js": "/miniproject/static/js/main.a7ee7a2e.chunk.js",
+    "main.js.map": "/miniproject/static/js/main.a7ee7a2e.chunk.js.map",
+    "runtime-main.js": "/miniproject/static/js/runtime-main.b46af907.js",
+    "runtime-main.js.map": "/miniproject/static/js/runtime-main.b46af907.js.map",
+    "static/css/2.9d8b9176.chunk.css": "/miniproject/static/css/2.9d8b9176.chunk.css",
+    "static/js/2.8c767a50.chunk.js": "/miniproject/static/js/2.8c767a50.chunk.js",
+    "static/js/2.8c767a50.chunk.js.map": "/miniproject/static/js/2.8c767a50.chunk.js.map",
+    "static/js/3.639b2fd1.chunk.js": "/miniproject/static/js/3.639b2fd1.chunk.js",
+    "static/js/3.639b2fd1.chunk.js.map": "/miniproject/static/js/3.639b2fd1.chunk.js.map",
+    "index.html": "/miniproject/index.html",
+    "static/css/2.9d8b9176.chunk.css.map": "/miniproject/static/css/2.9d8b9176.chunk.css.map",
+    "static/css/main.78e3e4c8.chunk.css.map": "/miniproject/static/css/main.78e3e4c8.chunk.css.map",
+    "static/js/2.8c767a50.chunk.js.LICENSE.txt": "/miniproject/static/js/2.8c767a50.chunk.js.LICENSE.txt",
+    "static/media/icon.35bd2d02.png": "/miniproject/static/media/icon.35bd2d02.png",
+    "static/media/socialDapp.a378ebf8.png": "/miniproject/static/media/socialDapp.a378ebf8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b46af907.js",
+    "static/css/2.9d8b9176.chunk.css",
+    "static/js/2.8c767a50.chunk.js",
+    "static/css/main.78e3e4c8.chunk.css",
+    "static/js/main.a7ee7a2e.chunk.js"
+  ]
+}
