@@ -3,3 +3,6 @@ div.content {
     padding: 1px 20%;
     height: 1000px;
   }
+  .embed-responsive .card-img-top {
+    object-fit: cover;
+}

@@ -1,12 +1,12 @@
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import AddTweet from "./components/AddTweet";
 import Home from "./components/Home";
 import Profile from "./components/Profile"
-import icon from "./images/icon.png"
 import socialdapp from "./images/socialDapp.png";
 // import style from "https://www.w3schools.com/w3css/4/w3.css"
 // import "./App.css";
 require('dotenv').config()
-console.log(process.env.REACT_APP_WEB3_API_KEY)
+//console.log(process.env.REACT_APP_WEB3_API_KEY)
 console.log()
 function App() {
   return (
@@ -45,6 +45,11 @@ function App() {
                   Profile
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="addTweet">
+                  addTweet
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -58,6 +63,7 @@ function App() {
         <Route path="/" element={<Navigate replace to="home"></Navigate>} />
         <Route path="/home" element={<Home />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/addTweet" element={<AddTweet />}></Route>
       </Routes>
       {/* <Footer/> */}
       {/* Routes */}
